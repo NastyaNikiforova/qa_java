@@ -7,18 +7,18 @@ import org.junit.runners.Parameterized;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class LionTest { // параметризация - "самка", "самец", "не определен" + кол-во котят?
+public class LionParametrizedTest {
     private String sex;
     private boolean hasMane;
 
-    public LionTest(String sex, boolean hasMane) {
+    public LionParametrizedTest(String sex, boolean hasMane) {
         this.sex = sex;
         this.hasMane = hasMane;
     }
 
     @Parameterized.Parameters
     public static Object[][] getLionParam() {
-        return new Object[][] {
+        return new Object[][]{
                 {"Самец", true},
                 {"Самка", false},
         };
@@ -33,12 +33,4 @@ public class LionTest { // параметризация - "самка", "сам�
             System.out.println("Используйте допустимые значения пола животного - самец или самка");
         }
     }
-
-//    @Test
-//    public void getKittens() {
-//    }
-//
-//    @Test
-//    public void getFood() {
-//    }
 }
