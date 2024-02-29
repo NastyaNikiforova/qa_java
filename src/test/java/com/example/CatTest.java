@@ -1,14 +1,26 @@
 package com.example;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
-class CatTest {
+import java.util.List;
 
-    @org.junit.jupiter.api.Test
-    void getSound() {
-    }
+@RunWith(MockitoJUnitRunner.class)
+public class CatTest {
 
-    @org.junit.jupiter.api.Test
-    void getFood() {
+    @Test
+    public void getFoodForCat() {
+        try {
+            Feline feline = Mockito.mock(Feline.class);
+            Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+            Cat cat = new Cat(feline);
+            List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+            Assert.assertEquals(expectedFood, cat.getFood());
+        } catch (Exception exception) {
+            System.out.println("Неизвестный вид животного, используйте значение Травоядное или Хищник");
+        }
     }
 }
